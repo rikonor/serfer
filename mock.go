@@ -20,3 +20,11 @@ func (s *MockSerfEventRouter) Start() {
 	s.StartFnInvoked = true
 	s.StartFn()
 }
+
+// NewNOOPSerfEventRouter creates a NOOP MockSerfEventRouter
+func NewNOOPSerfEventRouter() *MockSerfEventRouter {
+	return &MockSerfEventRouter{
+		RegisterRouteFn: func(mfn MatcherFunc, rfn RouteFunc) {},
+		StartFn:         func() {},
+	}
+}
